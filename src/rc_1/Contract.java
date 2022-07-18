@@ -2,6 +2,7 @@ package rc_1;
 
 import javax.swing.*;
 
+import static rc_1.RC_1.countScrapMetal;
 import static rc_1.RC_1.textCredit;
 
 public class Contract {
@@ -9,32 +10,48 @@ public class Contract {
 
     ///////////////////////////////////////////////
     //количество
-    static int quantity = quantity();
+    private static int quantity = quantity();
 
-    static public int quantity() {
-        int quantity = (int) ((Math.random()) * 20) + 1;
+    private static int quantity() {
+        int quantity = Contract.randNumber();
         System.out.println("quantity = " + quantity);
         return quantity;
     }
 
+    private static int randNumber() {
+        return (int) (Math.random() * 20) + 1;
+    }
+
     ///////////////////////////////////////////////
     //общая цена
-    static int prize = prize();
+    private static int prize = prize();
 
-    static public int prize() {
+    private static int prize() {
         int prize = 15;
         return quantity * prize;
     }
 
-    static public void quest() {
+    private static void update() {
+        quantity = quantity();
+        prize = prize();
+    }
+
+    private static void questMessage() {
         JOptionPane.showMessageDialog(null, "I need to:\n" + "scrap: " + quantity + "\n" + "price: " + prize + " credit");
+    }
+
+    private static void updateMessageContract() {
+        JOptionPane.showMessageDialog(null, "контракт исполнен: \n" + "получено: " + " +" + prize + " credit's");
+    }
+
+
+    static void quest() {
+
+        Contract.questMessage();
 
         int response = JOptionPane.showConfirmDialog(null, "желаете отдать ресурсы за вознаграждение?", "confim", JOptionPane.YES_NO_CANCEL_OPTION);
 
-
-        if ((response == JOptionPane.YES_OPTION)) {
-            System.out.println("заходите еще!");
-
+        if ((response == JOptionPane.YES_OPTION) && (countScrapMetal >= quantity)) {
             //проверить есть ли ресурсы
             if (RC_1.countScrapMetal >= quantity) {
                 RC_1.money += prize;
@@ -42,16 +59,18 @@ public class Contract {
                 RC_1.textCollection.setText(String.valueOf(RC_1.countScrapMetal));
 
                 textCredit.setText("credit: " + String.valueOf(RC_1.money));
-                JOptionPane.showMessageDialog(null, "контракт исполнен: \n" + "получено: " + " +" + prize + " credit's");
 
+                Contract.updateMessageContract();
+                //  JOptionPane.showMessageDialog(null, "контракт исполнен: \n" + "получено: " + " +" + prize + " credit's");
                 //если исполнен контракт, создать  новый
-                // TODO: 18.07.2022 не сбрасывается 
-                quantity();
-
-            } else
-                JOptionPane.showMessageDialog(null, "недостаточно ресурсов");
-
-        }
+                update();
+            }
+        } else if (response == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(null, "заходите еще!");
+        } else if (response == JOptionPane.CANCEL_OPTION) {
+            System.out.println("cancel");
+        } else JOptionPane.showMessageDialog(null, "у вас нет ресурсов");
+        // else updateMessageContract();
     }
 
     public static void main(String[] args) {

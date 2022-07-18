@@ -11,10 +11,10 @@ import java.awt.event.ActionListener;
 public class RC_1 extends JFrame {
 
 
-    static int weight = 50;
-    static int energy = 100;
-    static int money = 100;
-    static int experience = 1;
+    static int weight = 0;
+    static int energy = 0;
+    static int money = 0;
+    static int experience = 0;
     static int countScrapMetal = 0;
 
     static JTextArea textCredit = new JTextArea("credit: " + money);
@@ -27,7 +27,7 @@ public class RC_1 extends JFrame {
     String str = " ";
     JTextArea helper = new JTextArea(str);
 
-   static JTextArea textCollection = new JTextArea(String.valueOf(countScrapMetal));
+    static JTextArea textCollection = new JTextArea(String.valueOf(countScrapMetal));
 
     JTextArea textEnergy = new JTextArea(String.valueOf(energy));
 
@@ -197,14 +197,17 @@ public class RC_1 extends JFrame {
     class HandlerPurchase implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             System.out.println("handlerPurchase");
-            if (money >= 50) {
-                money -= 50;
+
+            int need_money =1500;
+
+            if (money >= need_money) {
+                money -= need_money;
                 buyScrapParseButton.setEnabled(false);
                 JOptionPane.showMessageDialog(null, "спасибо за покупку! заходите еще) ");
                 textCredit.setText("credit: " + money);
                 experience++;
             } else
-                JOptionPane.showMessageDialog(null, "недостаточно кредитов");
+                JOptionPane.showMessageDialog(null, "недостаточно кредитов\n" + "необоходимо: " + need_money + " credit's");
 
             System.out.println("exp: " + experience);
         }
@@ -231,7 +234,7 @@ public class RC_1 extends JFrame {
 
         new RC_1();
 
-        System.out.println("countScrapMetal: "+ countScrapMetal);
+        System.out.println("countScrapMetal: " + countScrapMetal);
     }
 }
 
