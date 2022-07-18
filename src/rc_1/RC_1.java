@@ -11,13 +11,14 @@ import java.awt.event.ActionListener;
 public class RC_1 extends JFrame {
 
 
-    static int weight = 0;
+    static int weight = 1;
     static int energy = 0;
-    static int money = 0;
+    static int money = 1000;
     static int experience = 0;
     static int countScrapMetal = 0;
 
     static JTextArea textCredit = new JTextArea("credit: " + money);
+    static JTextArea textWeight = new JTextArea("weight: " + weight);
 
 
     String dialog = "больше не унесу";
@@ -44,6 +45,8 @@ public class RC_1 extends JFrame {
     ScrapSorting scrapSorting = new ScrapSorting();
 
     JButton questContract = new JButton("contract");
+
+    JButton transportStore = new JButton("transport");
 
     public RC_1() {
 
@@ -88,6 +91,9 @@ public class RC_1 extends JFrame {
         c.add(textCredit);
         textCredit.setEditable(false);
         textCredit.setForeground(Color.blue);
+        ///////////////
+        c.add(textWeight);
+        textWeight.setEditable(false);
 
         c.add(scrapParseButton);
         HandlerScrapParse handlerScrapParse = new HandlerScrapParse();
@@ -105,6 +111,10 @@ public class RC_1 extends JFrame {
         c.add(questContract);
         HandlerQuestContract handlerQuestContract = new HandlerQuestContract();
         questContract.addActionListener(handlerQuestContract);
+
+        c.add(transportStore);
+        HandlerTransportStore handlerTransportStore = new HandlerTransportStore();
+        transportStore.addActionListener(handlerTransportStore);
     }
 
     class Handler implements ActionListener {
@@ -112,13 +122,12 @@ public class RC_1 extends JFrame {
         public void actionPerformed(ActionEvent e) {
 
             //ПЕРЕВЕС
-            if (countScrapMetal >= weight) {
+            if (countScrapMetal == weight) {
+                JOptionPane.showMessageDialog(null, " Перевес! Необходимо приобрести транспорт!");
                 helper.setBackground(Color.red);
                 helper.setText(dialog);
                 buttonCollection.setEnabled(false);
-            }
-
-            if ((e.getSource() == buttonCollection) && energy >= 1) {
+            } else if ((e.getSource() == buttonCollection) && energy >= 1 && weight > 0) {
                 energy -= 5;
                 countScrapMetal++;
                 textEnergy.setText(String.valueOf(energy));
@@ -198,7 +207,7 @@ public class RC_1 extends JFrame {
         public void actionPerformed(ActionEvent e) {
             System.out.println("handlerPurchase");
 
-            int need_money =1500;
+            int need_money = 1500;
 
             if (money >= need_money) {
                 money -= need_money;
@@ -229,6 +238,56 @@ public class RC_1 extends JFrame {
         }
     }
 
+    class HandlerTransportStore implements ActionListener {
+
+
+        public void actionPerformed(ActionEvent e) {
+
+            test();
+
+            if (e.getSource() == transportStore) {
+                System.out.println("в магазине");
+                if ((money >= 70) && (count == 0)) {
+                    JOptionPane.showMessageDialog(null, "вы приобрели тележку! грузоподъемность 10 единиц");
+                    weight += 9;
+                    textWeight.setText("weight: " + String.valueOf(weight));
+                    money -= 70;
+                    textCredit.setText("credit: " + money);
+                    count++;
+
+                    System.out.println("count: " + count);
+
+                } else
+                    JOptionPane.showMessageDialog(null, "недостаточно credit's ");
+            }
+        }
+    }
+
+
+    // TODO: 18.07.2022  //пока не выходит
+    static int count = 0;
+
+    static public int isAvailable(int x) {
+
+        switch (count) {
+            case 0:
+                System.out.println("case 0:");
+                break;
+            case 1:
+                //StringIsOk();
+                System.out.println("count " + count + " isAvailable case: 1");
+                return 1;
+
+        }
+
+        return 0;
+    }
+
+
+    public static void test() {
+        JOptionPane.showMessageDialog(null, "телега: 70 credits - [вместимость 10 единиц] " + RC_1.isAvailable(1) + "\n" +
+                "большая телега: 300 credits - [вместимость 35 единиц]" + RC_1.isAvailable(2) + "\n");
+    }
 
     public static void main(String[] args) {
 
