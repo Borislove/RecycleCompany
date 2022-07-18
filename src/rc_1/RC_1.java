@@ -11,13 +11,13 @@ import java.awt.event.ActionListener;
 public class RC_1 extends JFrame {
 
 
+    static int weight = 50;
     static int energy = 100;
-
     static int money = 100;
-
     static int experience = 1;
+    static int countScrapMetal = 0;
 
-    JTextArea textCredit = new JTextArea("credit: " + money);
+    static JTextArea textCredit = new JTextArea("credit: " + money);
 
 
     String dialog = "больше не унесу";
@@ -27,8 +27,7 @@ public class RC_1 extends JFrame {
     String str = " ";
     JTextArea helper = new JTextArea(str);
 
-    static int countScrapMetal = 0;
-    JTextArea textCollection = new JTextArea(String.valueOf(countScrapMetal));
+   static JTextArea textCollection = new JTextArea(String.valueOf(countScrapMetal));
 
     JTextArea textEnergy = new JTextArea(String.valueOf(energy));
 
@@ -38,14 +37,13 @@ public class RC_1 extends JFrame {
     static boolean energyIsOk = true;
 
     JButton sell_scrap_Button = new JButton("sell scrap");
-
-
     JButton scrapParseButton = new JButton("parse scrap");
     JButton buyScrapParseButton = new JButton("buy parse scrap");
-
     JButton showMyLootButton = new JButton("inventory");
 
     ScrapSorting scrapSorting = new ScrapSorting();
+
+    JButton questContract = new JButton("contract");
 
     public RC_1() {
 
@@ -103,14 +101,18 @@ public class RC_1 extends JFrame {
         c.add(showMyLootButton);
         HandlerShowMyLooting handlerShowMyLooting = new HandlerShowMyLooting();
         showMyLootButton.addActionListener(handlerShowMyLooting);
+
+        c.add(questContract);
+        HandlerQuestContract handlerQuestContract = new HandlerQuestContract();
+        questContract.addActionListener(handlerQuestContract);
     }
 
     class Handler implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
 
-            //если перевес
-            if (countScrapMetal >= 4) {
+            //ПЕРЕВЕС
+            if (countScrapMetal >= weight) {
                 helper.setBackground(Color.red);
                 helper.setText(dialog);
                 buttonCollection.setEnabled(false);
@@ -151,6 +153,7 @@ public class RC_1 extends JFrame {
         }
     }
 
+    //продажа лома , 10 монеток
     class HandlerSellScrap implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             System.out.println("HandlerSellScrap click");
@@ -215,10 +218,20 @@ public class RC_1 extends JFrame {
         }
     }
 
+    class HandlerQuestContract implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == questContract) {
+                Contract.quest();
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
 
         new RC_1();
+
+        System.out.println("countScrapMetal: "+ countScrapMetal);
     }
 }
 
