@@ -12,7 +12,7 @@ public class RC_1 extends JFrame {
 
     static int energy = 0;
 
-    static int money = 50;
+    static int money = 0;
 
     static int experience = 0;
 
@@ -26,7 +26,7 @@ public class RC_1 extends JFrame {
     String str = " ";
     JTextArea helper = new JTextArea(str);
 
-    int countScrapMetal = 0;
+    static int countScrapMetal = 0;
     JTextArea textCollection = new JTextArea(String.valueOf(countScrapMetal));
 
     JTextArea textEnergy = new JTextArea(String.valueOf(energy));
