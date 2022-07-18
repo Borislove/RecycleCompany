@@ -27,11 +27,16 @@ public class ScrapSorting {
         int position = randomPosition();
         int quantity = quantity();
 
+
         System.out.println("quantity " + quantity());
 
+        if (RC_1.countScrapMetal >= 1) {
+            JOptionPane.showMessageDialog(null, "получено: " + arrayScrapSorting[position] + " x" + quantity);
 
-        JOptionPane.showMessageDialog(null, "получено: " + arrayScrapSorting[position] + " x" + quantity);
-
+            RC_1.countScrapMetal -= 1;
+            RC_1.textCollection.setText(String.valueOf(RC_1.countScrapMetal));
+        } else
+            JOptionPane.showMessageDialog(null, "недостаточно лома: ");
         //test
 
         switch (position) {
@@ -59,12 +64,13 @@ public class ScrapSorting {
         }
     }
 
-    static public  void showMyLoot() {
+    static public void showMyLoot() {
         JOptionPane.showMessageDialog(null, "wire: " + wire + "\n"
                 + "metal: " + metal + "\n" +
                 "plastic: " + plastic + "\n" +
                 "glass: " + glass + "\n" +
-                "electronics: " + electronics);
+                "electronics: " + electronics + "\n" +
+                "scrap: " + RC_1.countScrapMetal);
     }
 
     public static void main(String[] args) {

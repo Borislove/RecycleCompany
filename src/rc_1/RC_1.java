@@ -3,6 +3,8 @@ package rc_1;
 // TODO: 18.07.2022  String.valueOf   - вынести в одну
 // TODO: 18.07.2022  text.SetText (); 
 
+import rc_1.transport_store.TransportStore;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,14 +13,14 @@ import java.awt.event.ActionListener;
 public class RC_1 extends JFrame {
 
 
-    static int weight = 1;
-    static int energy = 0;
-    static int money = 1000;
+    public static int weight = 1;
+    static int energy = 100;
+    public static int money = 2000;
     static int experience = 0;
     static int countScrapMetal = 0;
 
-    static JTextArea textCredit = new JTextArea("credit: " + money);
-    static JTextArea textWeight = new JTextArea("weight: " + weight);
+    public static JTextArea textCredit = new JTextArea("credit: " + money);
+    public static JTextArea textWeight = new JTextArea("weight: " + weight);
 
 
     String dialog = "больше не унесу";
@@ -46,7 +48,7 @@ public class RC_1 extends JFrame {
 
     JButton questContract = new JButton("contract");
 
-    JButton transportStore = new JButton("transport");
+    public static JButton transportStore = new JButton("transport");
 
     public RC_1() {
 
@@ -113,8 +115,10 @@ public class RC_1 extends JFrame {
         questContract.addActionListener(handlerQuestContract);
 
         c.add(transportStore);
-        HandlerTransportStore handlerTransportStore = new HandlerTransportStore();
+        TransportStore.HandlerTransportStore handlerTransportStore = new TransportStore.HandlerTransportStore();
         transportStore.addActionListener(handlerTransportStore);
+
+        //pack();
     }
 
     class Handler implements ActionListener {
@@ -238,56 +242,6 @@ public class RC_1 extends JFrame {
         }
     }
 
-    class HandlerTransportStore implements ActionListener {
-
-
-        public void actionPerformed(ActionEvent e) {
-
-            test();
-
-            if (e.getSource() == transportStore) {
-                System.out.println("в магазине");
-                if ((money >= 70) && (count == 0)) {
-                    JOptionPane.showMessageDialog(null, "вы приобрели тележку! грузоподъемность 10 единиц");
-                    weight += 9;
-                    textWeight.setText("weight: " + String.valueOf(weight));
-                    money -= 70;
-                    textCredit.setText("credit: " + money);
-                    count++;
-
-                    System.out.println("count: " + count);
-
-                } else
-                    JOptionPane.showMessageDialog(null, "недостаточно credit's ");
-            }
-        }
-    }
-
-
-    // TODO: 18.07.2022  //пока не выходит
-    static int count = 0;
-
-    static public int isAvailable(int x) {
-
-        switch (count) {
-            case 0:
-                System.out.println("case 0:");
-                break;
-            case 1:
-                //StringIsOk();
-                System.out.println("count " + count + " isAvailable case: 1");
-                return 1;
-
-        }
-
-        return 0;
-    }
-
-
-    public static void test() {
-        JOptionPane.showMessageDialog(null, "телега: 70 credits - [вместимость 10 единиц] " + RC_1.isAvailable(1) + "\n" +
-                "большая телега: 300 credits - [вместимость 35 единиц]" + RC_1.isAvailable(2) + "\n");
-    }
 
     public static void main(String[] args) {
 
