@@ -10,11 +10,12 @@ import java.awt.event.ActionListener;
 
 public class RC_1 extends JFrame {
 
-    static int energy = 0;
 
-    static int money = 0;
+    static int energy = 100;
 
-    static int experience = 0;
+    static int money = 100;
+
+    static int experience = 1;
 
     JTextArea textCredit = new JTextArea("credit: " + money);
 
@@ -36,11 +37,15 @@ public class RC_1 extends JFrame {
     boolean isSleeping = true;
     static boolean energyIsOk = true;
 
-    JButton sell_scrap = new JButton("sell scrap");
+    JButton sell_scrap_Button = new JButton("sell scrap");
 
 
-    JButton scrapParse = new JButton("parse scrap");
-    JButton buyScrapParse = new JButton("buy parse scrap");
+    JButton scrapParseButton = new JButton("parse scrap");
+    JButton buyScrapParseButton = new JButton("buy parse scrap");
+
+    JButton showMyLootButton = new JButton("inventory");
+
+    ScrapSorting scrapSorting = new ScrapSorting();
 
     public RC_1() {
 
@@ -77,24 +82,27 @@ public class RC_1 extends JFrame {
 
 
         //////////////////////
-        c.add(sell_scrap);
+        c.add(sell_scrap_Button);
         HandlerSellScrap sellScrap = new HandlerSellScrap();
-        sell_scrap.addActionListener(sellScrap);
+        sell_scrap_Button.addActionListener(sellScrap);
 
         ////////////////
         c.add(textCredit);
         textCredit.setEditable(false);
         textCredit.setForeground(Color.blue);
 
-        c.add(scrapParse);
+        c.add(scrapParseButton);
         HandlerScrapParse handlerScrapParse = new HandlerScrapParse();
-        scrapParse.addActionListener(handlerScrapParse);
+        scrapParseButton.addActionListener(handlerScrapParse);
 
 
-        c.add(buyScrapParse);
+        c.add(buyScrapParseButton);
         HandlerPurchase handlerPurchase = new HandlerPurchase();
-        buyScrapParse.addActionListener(handlerPurchase);
+        buyScrapParseButton.addActionListener(handlerPurchase);
 
+        c.add(showMyLootButton);
+        HandlerShowMyLooting handlerShowMyLooting = new HandlerShowMyLooting();
+        showMyLootButton.addActionListener(handlerShowMyLooting);
     }
 
     class Handler implements ActionListener {
@@ -147,7 +155,7 @@ public class RC_1 extends JFrame {
         public void actionPerformed(ActionEvent e) {
             System.out.println("HandlerSellScrap click");
             textCredit.setText(String.valueOf(money));
-            if (e.getSource() == sell_scrap) {
+            if (e.getSource() == sell_scrap_Button) {
 
                 //пока просто продаем и получаем монетки
                /* JOptionPane jOptionPane = new JOptionPane();
@@ -176,7 +184,8 @@ public class RC_1 extends JFrame {
         public void actionPerformed(ActionEvent e) {
 
             if (experience >= 1) {
-                JOptionPane.showMessageDialog(null, "получено: " + (int) (Math.random() * 10 + 1));
+                //   JOptionPane.showMessageDialog(null, "получено: " + (int) (Math.random() * 10 + 1));
+                scrapSorting.messageScrapSorting();
             } else
                 JOptionPane.showMessageDialog(null, "У тебя недостаточно знаний!");
         }
@@ -187,7 +196,7 @@ public class RC_1 extends JFrame {
             System.out.println("handlerPurchase");
             if (money >= 50) {
                 money -= 50;
-                buyScrapParse.setEnabled(false);
+                buyScrapParseButton.setEnabled(false);
                 JOptionPane.showMessageDialog(null, "спасибо за покупку! заходите еще) ");
                 textCredit.setText("credit: " + money);
                 experience++;
@@ -198,12 +207,18 @@ public class RC_1 extends JFrame {
         }
     }
 
+    class HandlerShowMyLooting implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == showMyLootButton) {
+                ScrapSorting.showMyLoot();
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
 
         new RC_1();
-
-
     }
 }
 
