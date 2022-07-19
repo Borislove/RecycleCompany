@@ -15,9 +15,9 @@ public class RC_1 extends JFrame {
 
     public static int weight = 1;
     static int energy = 100;
-    public static int money = 2000;
+    public static int money = 60;
     static int experience = 0;
-    static int countScrapMetal = 0;
+    static int countScrapMetal = 10;
 
     public static JTextArea textCredit = new JTextArea("credit: " + money);
     public static JTextArea textWeight = new JTextArea("weight: " + weight);

@@ -13,44 +13,7 @@ public class TransportStore {
 
     static int count = 0; //счетчик для покупок
 
-    //в наличии или нет
-    static char v = 'V';
-    static char x = 'X';
-
     static int countTransport = 0;
-
-/*    static public int isAvailable(int count) {
-
-        switch (count) {
-            case 0:
-                System.out.println("case 0:");
-                break;
-            case 1:
-                //StringIsOk();
-                System.out.println("count " + count + " isAvailable case: 1");
-
-                return 1;
-
-            case 2:
-                return 2;
-        }
-        return 0;
-    }*/
-
-    private static char yesNo(int countTransport, boolean test, int z) {
-        if (countTransport == 1 && test && z == 1) {
-            return v;
-        }
-
-        if (countTransport == 2 && test && z == 2) {
-            return v;
-        }
-
-        return x;
-    }
-
-    static boolean test = false;
-
 
     public static class HandlerTransportStore implements ActionListener {
 
@@ -72,7 +35,9 @@ public class TransportStore {
                     System.out.println("получена телега 1");
                     System.out.println("countTransport" + countTransport);
                     countTransport++;
-                    test = true;
+
+                    str_telega_1 = ' ';
+                    str_telega_1 = 'V';
                 }
 
                 if ((money >= 300) && (count == 1)) {
@@ -86,19 +51,29 @@ public class TransportStore {
                     System.out.println("получена телега 2");
                     System.out.println("countTransport" + countTransport);
                     countTransport++;
-                    test = true;
+
+                    str_telega_2 = ' ';
+                    str_telega_2 = 'V';
                 }
             } else
                 JOptionPane.showMessageDialog(null, "недостаточно credit's ");
         }
     }
 
-
-
-
-        private static void test() {
+      /*  private static void test() {
             JOptionPane.showMessageDialog(null, "телега: 70 credits - [вместимость 10 единиц]   " + yesNo(countTransport, test, 1) + "\n" +
                     "большая телега: 300 credits - [вместимость 35 единиц]   " + yesNo(countTransport, test, 2) + "\n");
-        }
+        }*/
+
+
+    private static char str_telega_1 = 'X';
+    private static char str_telega_2 = 'X';
+
+    private static void test() {
+
+        JOptionPane.showMessageDialog(null, "телега: 70 credits - (вместимость 10 единиц)   " + "[" + str_telega_1 + "]" + "\n" +
+                "большая телега: 300 credits - (вместимость 35 единиц)   " + "[" + str_telega_2 + "]" + "\n");
+
     }
+}
 
