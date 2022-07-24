@@ -1,7 +1,7 @@
 package rc_1;
 
 // TODO: 18.07.2022  String.valueOf   - вынести в одну
-// TODO: 18.07.2022  text.SetText (); 
+// TODO: 18.07.2022  text.SetText ();
 
 import rc_1.transport_store.TransportStore;
 
@@ -17,7 +17,7 @@ public class RC_1 extends JFrame {
     static int energy = 100;
     public static int money = 60;
     static int experience = 0;
-    static int countScrapMetal = 10;
+    public static int countScrapMetal = 10;
 
     public static JTextArea textCredit = new JTextArea("credit: " + money);
     public static JTextArea textWeight = new JTextArea("weight: " + weight);
