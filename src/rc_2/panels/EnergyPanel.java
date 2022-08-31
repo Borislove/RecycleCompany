@@ -1,5 +1,7 @@
 package rc_2.panels;
 
+import rc_2.values.numeric_values.Values;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -7,21 +9,23 @@ import java.awt.*;
 public class EnergyPanel extends JPanel {
 
     JLabel label;
+    static JTextField textField;
 
     static int countEnergy = 10;
 
-  static JPanel panel_1 = new JPanel();
-  static JPanel panel_2 = new JPanel();
-  static JPanel panel_3 = new JPanel();
-  static JPanel panel_4 = new JPanel();
-  static JPanel panel_5 = new JPanel();
-  static JPanel panel_6 = new JPanel();
-  static JPanel panel_7 = new JPanel();
-  static JPanel panel_8 = new JPanel();
-  static JPanel panel_9 = new JPanel();
-  static JPanel panel_10 = new JPanel();
+    static JPanel panel_1 = new JPanel();
+    static JPanel panel_2 = new JPanel();
+    static JPanel panel_3 = new JPanel();
+    static JPanel panel_4 = new JPanel();
+    static JPanel panel_5 = new JPanel();
+    static JPanel panel_6 = new JPanel();
+    static JPanel panel_7 = new JPanel();
+    static JPanel panel_8 = new JPanel();
+    static JPanel panel_9 = new JPanel();
+    static JPanel panel_10 = new JPanel();
 
     public EnergyPanel() {
+
 
         label = new JLabel(" ENERGY ");
         label.setFont(new Font("Bernard MT Condensed", Font.PLAIN, 24));
@@ -30,7 +34,7 @@ public class EnergyPanel extends JPanel {
 
         add(label);
 
-        panel_1.setBackground(Color.green);
+        /*panel_1.setBackground(Color.green);
         panel_1.setBorder(solidBorder);
         add(panel_1);
         panel_2.setBackground(Color.green);
@@ -59,15 +63,24 @@ public class EnergyPanel extends JPanel {
         add(panel_9);
         panel_10.setBackground(Color.green);
         panel_10.setBorder(solidBorder);
-        add(panel_10);
+        add(panel_10);*/
 
-         setBackground(Color.lightGray);
+        ///////////////////////////////////////////////
+
+        textField = new JTextField();
+        textField.setText("        " + String.valueOf(Values.enegry) + "           ");
+        textField.setFont(new Font("Bernard MT Condensed", Font.PLAIN, 24));
+        textField.setBackground(Color.black);
+        textField.setForeground(Color.green);
+        textField.setEditable(false);
+        add(textField);
+        ////////////////////////////////////////////////
+
+        setBackground(Color.lightGray);
         setVisible(true);
         //    setLayout(new FlowLayout());
         //Border solidBorder = BorderFactory.createLineBorder(Color.GREEN, 2);
         //setBorder(solidBorder);
         setBorder(BorderFactory.createEtchedBorder());
-
-
     }
 }

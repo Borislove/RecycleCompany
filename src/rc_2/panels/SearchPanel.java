@@ -57,11 +57,14 @@ public class SearchPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == SearchPanel.button) {
                 System.out.println("click search");
-                Values.scrap++;
-                textField.setText("    " + String.valueOf(Values.scrap) + "   ");
-                TradePanel.textField.setText("    " + String.valueOf(Values.scrap) + "    ");
+                if (Values.enegry != 0) {
+                    Values.scrap++;
+                    Values.enegry--;
+                    EnergyPanel.textField.setText("        "+ String.valueOf(Values.enegry)+ "           ");
+                    textField.setText("    " + String.valueOf(Values.scrap) + "   ");
+                    TradePanel.textField.setText("    " + String.valueOf(Values.scrap) + "    ");
 
-                if (EnergyPanel.countEnergy != 0) {
+              /*  if (EnergyPanel.countEnergy != 0) {
 
                     System.out.println("EnergyPanel.countEnergy: " + EnergyPanel.countEnergy);
                     switch (EnergyPanel.countEnergy) {
@@ -101,7 +104,10 @@ public class SearchPanel extends JPanel {
                 }
                 if (EnergyPanel.countEnergy == 0) {
                     button.setEnabled(false);
-                }
+                }*/
+                }else
+                    JOptionPane.showMessageDialog(null, " Не хватает энергии!");
+
             }
         }
     }

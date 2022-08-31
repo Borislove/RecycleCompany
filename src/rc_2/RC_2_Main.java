@@ -12,7 +12,7 @@ public class RC_2_Main {
     public static void main(String[] args) {
 
         //skin//
-       /* try {
+        /*try {
         //    UIManager.setLookAndFeel(new HiFiLookAndFeel());
             UIManager.setLookAndFeel(new AcrylLookAndFeel());
         } catch (UnsupportedLookAndFeelException ex) {
