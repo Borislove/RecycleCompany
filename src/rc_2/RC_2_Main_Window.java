@@ -12,15 +12,13 @@ public class RC_2_Main_Window extends JFrame {
 
     JPanel creditPanel;
     JPanel energyPanel ;
+    JPanel marketPanel;
     FlowLayout flowLayout;
     JTabbedPane jTabbedPane = new JTabbedPane();
     JPanel shopPanel;
     JPanel panel;
     SearchPanel searcPanel;
     TradePanel tradePanel = new TradePanel();
-
-    //картинки
-    ImageIcon icon = new ImageIcon("E:\\ПРОГРАММИРОВАНИЕ\\RecycleCompany\\shopImage\\shop.png");
 
     RC_2_Main_Window() {
 
@@ -87,10 +85,14 @@ public class RC_2_Main_Window extends JFrame {
         //  jTabbedPane.addTab("Source", null);
 
         shopPanel = new ShopPanel();
-        jTabbedPane.addTab(" SHOP ", icon, shopPanel);
+        jTabbedPane.addTab(" SHOP ", ImagePath.iconShop, shopPanel);
         //  jTabbedPane.setBorder(BorderFactory.createEtchedBorder(Color.green, Color.black));
         //  jTabbedPane.addTab("ShopPanel", creditPanel1);
         add(panel);
+
+
+        marketPanel = new MarketPanel();
+        jTabbedPane.addTab(" MARKET ", ImagePath.iconMarket, marketPanel);
 
         //настройки
 

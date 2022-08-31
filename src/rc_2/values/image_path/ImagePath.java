@@ -9,4 +9,7 @@ public class ImagePath {
     public static ImageIcon iconSearch = new ImageIcon("E:\\ПРОГРАММИРОВАНИЕ\\RecycleCompany\\shopImage\\scrap.png");
 
     public static ImageIcon iconTrade = new ImageIcon("E:\\ПРОГРАММИРОВАНИЕ\\RecycleCompany\\shopImage\\cycle.png");
+
+    public static ImageIcon iconMarket = new ImageIcon("E:\\ПРОГРАММИРОВАНИЕ\\RecycleCompany\\shopImage\\healthy-food.png");
+
 }
