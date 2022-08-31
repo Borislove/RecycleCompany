@@ -17,10 +17,6 @@ public class CreditPanel extends JPanel {
     FlowLayout flowLayout;
 
     public CreditPanel() {
-    /*     flowLayout = new FlowLayout();
-
-        Container c = new Container();
-        c.setLayout(flowLayout);*/
 
         /////////////////////////////////////////////////////////////////////////////
         values = new Values();
@@ -47,11 +43,11 @@ public class CreditPanel extends JPanel {
 
         ////////////////////////////////////////////////////////////////////////////////
         //рамка вокруг текста
-        Border solidBorder = BorderFactory.createLineBorder(Color.GREEN, 2);
+        Border solidBorder = BorderFactory.createLineBorder(Color.black, 2);
         label.setBorder(solidBorder);
 
         ////////COLOR BACKGROUND///////////
-        setBackground(Color.orange);
+        setBackground(Color.lightGray);
         //setBackground(Color.black);
         setVisible(true);
 

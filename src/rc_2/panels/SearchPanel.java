@@ -58,8 +58,50 @@ public class SearchPanel extends JPanel {
             if (e.getSource() == SearchPanel.button) {
                 System.out.println("click search");
                 Values.scrap++;
-                textField.setText(String.valueOf(Values.scrap));
-                TradePanel.textField.setText(String.valueOf(Values.scrap));
+                textField.setText("    " + String.valueOf(Values.scrap) + "   ");
+                TradePanel.textField.setText("    " + String.valueOf(Values.scrap) + "    ");
+
+                if (EnergyPanel.countEnergy != 0) {
+
+                    System.out.println("EnergyPanel.countEnergy: " + EnergyPanel.countEnergy);
+                    switch (EnergyPanel.countEnergy) {
+
+                        case 1:
+                            EnergyPanel.panel_1.setBackground(Color.red);
+                            break;
+                        case 2:
+                            EnergyPanel.panel_2.setBackground(Color.red);
+                            break;
+                        case 3:
+                            EnergyPanel.panel_3.setBackground(Color.red);
+                            break;
+                        case 4:
+                            EnergyPanel.panel_4.setBackground(Color.orange);
+                            break;
+                        case 5:
+                            EnergyPanel.panel_5.setBackground(Color.orange);
+                            break;
+                        case 6:
+                            EnergyPanel.panel_6.setBackground(Color.orange);
+                            break;
+                        case 7:
+                            EnergyPanel.panel_7.setBackground(Color.orange);
+                            break;
+                        case 8:
+                            EnergyPanel.panel_8.setBackground(Color.white);
+                            break;
+                        case 9:
+                            EnergyPanel.panel_9.setBackground(Color.white);
+                            break;
+                        case 10:
+                            EnergyPanel.panel_10.setBackground(Color.white);
+                            break;
+                    }
+                    EnergyPanel.countEnergy--;
+                }
+                if (EnergyPanel.countEnergy == 0) {
+                    button.setEnabled(false);
+                }
             }
         }
     }

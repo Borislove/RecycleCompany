@@ -1,18 +1,17 @@
 package rc_2;
 
-import rc_2.panels.CreditPanel;
-import rc_2.panels.SearchPanel;
-import rc_2.panels.ShopPanel;
-import rc_2.panels.TradePanel;
+import rc_2.panels.*;
 import rc_2.values.image_path.ImagePath;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class RC_2_Main_Window extends JFrame {
 
 
     JPanel creditPanel;
+    JPanel energyPanel ;
     FlowLayout flowLayout;
     JTabbedPane jTabbedPane = new JTabbedPane();
     JPanel shopPanel;
@@ -41,8 +40,22 @@ public class RC_2_Main_Window extends JFrame {
         ///////////////////////////////////////////////////
         creditPanel = new CreditPanel();
         Container container = getContentPane();
-        container.add(creditPanel, BorderLayout.NORTH);
+       // container.add(creditPanel, BorderLayout.NORTH);
         //////////////////////////////////////////////////
+
+        //Add energyPanel
+        energyPanel = new EnergyPanel();
+   //     container.add(energyPanel,BorderLayout.NORTH);
+
+        //
+        JPanel panelNorth = new JPanel();
+        panelNorth.setBackground(Color.lightGray);
+        Border solidBorder = BorderFactory.createLineBorder(Color.black, 2);
+        panelNorth.setBorder(solidBorder);
+        panelNorth.add(energyPanel);
+        panelNorth.add(creditPanel);
+        container.add(panelNorth,BorderLayout.NORTH);
+
 
         //Add Tab Panel
         panel = new JPanel();
@@ -64,17 +77,17 @@ public class RC_2_Main_Window extends JFrame {
 
         //SEARCH PANEL
         searcPanel = new SearchPanel();
-        jTabbedPane.addTab("Search", ImagePath.iconSearch, searcPanel);
+        jTabbedPane.addTab(" SEARCH ", ImagePath.iconSearch, searcPanel);
 
 
         //TRADE PANEL
         //tradePanel = new TradePanel();
-        jTabbedPane.addTab("trade", ImagePath.iconTrade, tradePanel);
+        jTabbedPane.addTab(" TRADE ", ImagePath.iconTrade, tradePanel);
 
         //  jTabbedPane.addTab("Source", null);
 
         shopPanel = new ShopPanel();
-        jTabbedPane.addTab("Shop", icon, shopPanel);
+        jTabbedPane.addTab(" SHOP ", icon, shopPanel);
         //  jTabbedPane.setBorder(BorderFactory.createEtchedBorder(Color.green, Color.black));
         //  jTabbedPane.addTab("ShopPanel", creditPanel1);
         add(panel);
@@ -86,6 +99,7 @@ public class RC_2_Main_Window extends JFrame {
 
         jTabbedPane.setSelectedComponent(tradePanel);
         tradePanel.repaint();
+
 
 
         // setBackground(Color.black); //не работает Оо

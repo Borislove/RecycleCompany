@@ -4,7 +4,7 @@ public class Values {
 
     public static int tax = 5;
     public static int credit = 0;
-    public static int scrap = 10;
+    public static int scrap = 0;
     public static int price = Values.priceRand();
 
     public static int priceRand() {

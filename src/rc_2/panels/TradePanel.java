@@ -26,7 +26,7 @@ public class TradePanel extends JPanel {
         setLayout(new FlowLayout());
 
         button = new JButton();
-        button.setText("SELL");
+        button.setText(" SELL ");
         button.setForeground(Color.green);
         button.setBackground(Color.black);
         button.setFont(new Font("Bernard MT Condensed", Font.PLAIN, 20));
@@ -35,7 +35,7 @@ public class TradePanel extends JPanel {
         add(button);
 
         // textField = new JTextField();
-        textField.setText(String.valueOf(Values.scrap));
+        textField.setText("    " + String.valueOf(Values.scrap) + "    ");
         textField.updateUI();
         textField.setSize(200, 200);
         textField.setFont(new Font("Bernard MT Condensed", Font.PLAIN, 20));
@@ -69,9 +69,9 @@ public class TradePanel extends JPanel {
                     System.out.println("test price:" + Values.price);
 
                     Values.scrap--;
-                    textField.setText(String.valueOf(Values.scrap));
-                    CreditPanel.textField.setText(String.valueOf(Values.credit));
-                    SearchPanel.textField.setText(String.valueOf(Values.scrap));
+                    textField.setText("    " + String.valueOf(Values.scrap) + "    ");
+                    CreditPanel.textField.setText("    " + String.valueOf(Values.credit) + "    ");
+                    SearchPanel.textField.setText("    " + String.valueOf(Values.scrap) + "    ");
 
                     label.setText("price: " + Values.priceRand());
                 }

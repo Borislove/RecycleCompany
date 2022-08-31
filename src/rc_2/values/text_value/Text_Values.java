@@ -2,7 +2,7 @@ package rc_2.values.text_value;
 
 public class Text_Values {
 
-    private String str = "credit: ";
+    private String str = " CREDIT: ";
 
     public String getStr() {
         return str;
