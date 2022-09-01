@@ -74,6 +74,12 @@ public class TradePanel extends JPanel {
                     SearchPanel.textField.setText("    " + String.valueOf(Values.scrap) + "    ");
 
                     label.setText("price: " + Values.priceRand());
+
+                    MessagePanel.textField.setText(" You sell scrap");
+                }
+
+                if(Values.scrap == 0){
+                    MessagePanel.textField.setText(" need more scrap!!!");
                 }
             }
         }

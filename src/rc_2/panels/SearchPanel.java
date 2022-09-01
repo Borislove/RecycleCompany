@@ -55,14 +55,17 @@ public class SearchPanel extends JPanel {
     class ButtonHandler implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
+
             if (e.getSource() == SearchPanel.button) {
                 System.out.println("click search");
                 if (Values.enegry != 0) {
                     Values.scrap++;
                     Values.enegry--;
-                    EnergyPanel.textField.setText("        "+ String.valueOf(Values.enegry)+ "           ");
+                    EnergyPanel.textField.setText("        " + String.valueOf(Values.enegry) + "           ");
                     textField.setText("    " + String.valueOf(Values.scrap) + "   ");
                     TradePanel.textField.setText("    " + String.valueOf(Values.scrap) + "    ");
+
+                    MessagePanel.textField.setText("  You got scrap!!!");
 
               /*  if (EnergyPanel.countEnergy != 0) {
 
@@ -105,10 +108,15 @@ public class SearchPanel extends JPanel {
                 if (EnergyPanel.countEnergy == 0) {
                     button.setEnabled(false);
                 }*/
-                }else
-                    JOptionPane.showMessageDialog(null, " Не хватает энергии!");
-
+                } else {
+                    //    JOptionPane.showMessageDialog(null, " Не хватает энергии!");
+           //         MessagePanel.textField.setForeground(Color.red);
+                    MessagePanel.textField.setText(" No energy!!!");
+                   // button.setEnabled(false);
+                   // MessagePanel.textField.setForeground(Color.green);
+                }
             }
+
         }
     }
 }

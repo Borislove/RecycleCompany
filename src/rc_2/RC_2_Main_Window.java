@@ -13,6 +13,8 @@ public class RC_2_Main_Window extends JFrame {
     JPanel creditPanel;
     JPanel energyPanel ;
     JPanel marketPanel;
+    JPanel messagePanel;
+    JPanel inventoryPanel;
     FlowLayout flowLayout;
     JTabbedPane jTabbedPane = new JTabbedPane();
     JPanel shopPanel;
@@ -102,6 +104,12 @@ public class RC_2_Main_Window extends JFrame {
         jTabbedPane.setSelectedComponent(tradePanel);
         tradePanel.repaint();
 
+        messagePanel = new MessagePanel();
+        add(messagePanel, BorderLayout.SOUTH);
+
+
+        inventoryPanel = new InventoryPanel();
+        jTabbedPane.addTab(" INVENTORY ", null, inventoryPanel);
 
 
         // setBackground(Color.black); //не работает Оо

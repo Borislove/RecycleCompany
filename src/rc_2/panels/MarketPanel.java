@@ -154,8 +154,10 @@ public class MarketPanel extends JPanel {
                     Values.water_count++;
                     Values.credit -= Values.price_water;
                     CreditPanel.textField.setText("    " + String.valueOf(Values.credit) + "    ");
-                }else
-                    JOptionPane.showMessageDialog(null, " Нет кредитов!");
+                    MessagePanel.textField.setText(" Buy water :) Thanks!");
+                } else
+                    // JOptionPane.showMessageDialog(null, " Нет кредитов!");
+                    MessagePanel.textField.setText(" NO CREDIT!!!");
             }
         }
     }
@@ -170,8 +172,10 @@ public class MarketPanel extends JPanel {
                     Values.pizza_count++;
                     Values.credit -= Values.price_pizza;
                     CreditPanel.textField.setText("    " + String.valueOf(Values.credit) + "    ");
-                }else
-                    JOptionPane.showMessageDialog(null, " Нет кредитов!");
+                    MessagePanel.textField.setText(" Buy pizza :) Thanks!");
+                } else
+                    // JOptionPane.showMessageDialog(null, " Нет кредитов!");
+                    MessagePanel.textField.setText(" NO CREDIT!!!");
             }
         }
     }
@@ -186,8 +190,10 @@ public class MarketPanel extends JPanel {
                     Values.burger_count++;
                     Values.credit -= Values.price_burger;
                     CreditPanel.textField.setText("    " + String.valueOf(Values.credit) + "    ");
-                }else
-                    JOptionPane.showMessageDialog(null, " Нет кредитов!");
+                    MessagePanel.textField.setText(" Buy burger :) Thanks!");
+                } else
+                    //  JOptionPane.showMessageDialog(null, " Нет кредитов!");
+                    MessagePanel.textField.setText(" NO CREDIT!!!");
             }
         }
     }

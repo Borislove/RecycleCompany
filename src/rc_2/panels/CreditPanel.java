@@ -37,7 +37,6 @@ public class CreditPanel extends JPanel {
         textField.setFont(new Font("Bernard MT Condensed", Font.PLAIN, 24));
         textField.setBackground(Color.black);
         textField.setForeground(Color.green);
-        textField.setForeground(Color.green);
         textField.setEditable(false);
         add(textField);
 
