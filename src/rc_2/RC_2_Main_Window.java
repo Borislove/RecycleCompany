@@ -117,6 +117,10 @@ public class RC_2_Main_Window extends JFrame {
 
         // setBackground(Color.black); //не работает Оо
 
+        //CHEATS PANEL
+        CheatsPanel cheatsPanel = new CheatsPanel();
+        jTabbedPane.addTab(" cheats", null, cheatsPanel);
+
         setVisible(true);
 
     }
