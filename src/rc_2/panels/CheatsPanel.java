@@ -11,6 +11,7 @@ public class CheatsPanel extends JPanel {
 
     JButton button_add_credit = new JButton("add credit");
     JButton button_add_enegry = new JButton("add energy");
+    JButton button_add_scrap = new JButton("add scrap");
     JButton button_clear = new JButton("clear ");
 
     public CheatsPanel() {
@@ -41,6 +42,21 @@ public class CheatsPanel extends JPanel {
         });
         add(button_add_enegry);
 
+        button_add_scrap.setFocusable(false);
+        button_add_scrap.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == button_add_scrap) {
+                    //   CreditPanel.textField.setText("10000");
+                    Values.scrap += 50;
+                    SearchPanel.textField.setText(String.valueOf(Values.scrap));
+                    TradePanel.textField.setText(String.valueOf(Values.scrap));
+                }
+            }
+        });
+        add(button_add_scrap);
+
+        ////////////////////////////////////////////////////////////////////////////
         button_clear.setFocusable(false);
         button_clear.setBackground(Color.red);
         button_clear.addActionListener(new ActionListener() {

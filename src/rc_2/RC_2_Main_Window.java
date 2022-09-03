@@ -2,10 +2,12 @@ package rc_2;
 
 import rc_2.panels.*;
 import rc_2.values.image_path.ImagePath;
+import rc_2.values.numeric_values.Values;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class RC_2_Main_Window extends JFrame {
 
@@ -121,7 +123,14 @@ public class RC_2_Main_Window extends JFrame {
         CheatsPanel cheatsPanel = new CheatsPanel();
         jTabbedPane.addTab(" cheats", null, cheatsPanel);
 
+
         setVisible(true);
 
+
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        jTabbedPane.setSelectedIndex(1);
+        System.out.println("Values scrap" + Values.scrap);
     }
 }

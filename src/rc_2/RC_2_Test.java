@@ -18,7 +18,9 @@ public class RC_2_Test {
         /////////////////////////////////////
 
         //test runningStroke
-        Text_Values text_values = new Text_Values();
-        text_values.runningString();
+ /*       Text_Values text_values = new Text_Values();
+        text_values.runningString();*/
+
+        System.out.println(11%10 ==0);
     }
 }
