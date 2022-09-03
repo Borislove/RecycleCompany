@@ -32,4 +32,6 @@ public class ImagePath {
     public static ImageIcon imageBunk_24px = new ImageIcon("E:\\ПРОГРАММИРОВАНИЕ\\RecycleCompany\\bed\\bed_24px\\bunk.png");
     public static ImageIcon imageSingle_24px = new ImageIcon("E:\\ПРОГРАММИРОВАНИЕ\\RecycleCompany\\bed\\bed_24px\\single-bed.png");
     public static ImageIcon imageBedroom_24px = new ImageIcon("E:\\ПРОГРАММИРОВАНИЕ\\RecycleCompany\\bed\\bed_24px\\bedroom.png");
+
+    public static ImageIcon imageBench_24px = new ImageIcon("E:\\ПРОГРАММИРОВАНИЕ\\RecycleCompany\\bed\\bed_24px\\bench.png");
 }

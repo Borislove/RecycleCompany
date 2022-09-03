@@ -9,7 +9,7 @@ import java.awt.*;
 public class EnergyPanel extends JPanel {
 
     JLabel label;
-    static JTextField textField;
+    public static JTextField textField;
 
     static int countEnergy = 10;
 

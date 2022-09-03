@@ -10,7 +10,7 @@ import java.awt.*;
 public class MessagePanel extends JPanel {
 
     JLabel label;
-  static   JTextField textField;
+  public static   JTextField textField;
 
     public MessagePanel() {
         label = new JLabel(" MESSAGE: ");

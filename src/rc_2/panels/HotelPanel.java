@@ -1,5 +1,6 @@
 package rc_2.panels;
 
+import rc_2.panels.hotel_item.Bench;
 import rc_2.values.image_path.ImagePath;
 import rc_2.values.numeric_values.Values;
 
@@ -25,9 +26,12 @@ public class HotelPanel extends JPanel {
     JPanel panel_2 = new JPanel();
     JPanel panel_3 = new JPanel();
 
+    JPanel panel_4 = new JPanel();
+
     JPanel panel_bunk = new JPanel();
     JPanel panel_single_bed = new JPanel();
     JPanel panel_bedroom = new JPanel();
+    JPanel panel_bench = new Bench();
 
     JLabel label_1_description;
     JLabel label_2_description;
@@ -37,12 +41,17 @@ public class HotelPanel extends JPanel {
     JButton button_single_bed = new JButton("  RELAX  ");
     JButton button_bedroom = new JButton("  RELAX  ");
 
+
     public HotelPanel() {
         setBackground(Color.black);
 
         label = new JLabel(" -------WELCOME HOTEL------");
-        label.setForeground(Color.black);
+        label.setForeground(Color.white);
         add(label);
+
+        //panel 4////////////////
+        add(panel_bench);
+        //////////////////////////
 
         Border solidBorder = BorderFactory.createLineBorder(Color.green, 2);
         Border orangeBorder = BorderFactory.createLineBorder(Color.orange, 3);
@@ -58,7 +67,7 @@ public class HotelPanel extends JPanel {
         panel_1.setBackground(Color.black);
         panel_1.setBorder(solidBorder);
 
-        panel_bunk.setBackground(Color.gray);
+        panel_bunk.setBackground(Color.lightGray);
         label_1 = new JLabel();
         label_1.setIcon(ImagePath.imageBunk_24px);
         panel_bunk.add(label_1);
@@ -80,17 +89,19 @@ public class HotelPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == button_bunk) {
                     System.out.println("click button_bunk");            // 150 credit - 40 recovery
-                    if (Values.credit >= 150) {
+                    if (Values.credit >= 150 && Values.enegry < 30) {
                         Values.credit = Values.credit - Values.bunk_price;
                         Values.enegry = Values.enegry + Values.bunk_recovery;
 
                         CreditPanel.textField.setText("" + Values.credit);
                         EnergyPanel.textField.setText("" + Values.enegry);
 
-                        MessagePanel.textField.setText(" "+ " recovery " + Values.bunk_recovery);
+                        MessagePanel.textField.setText(" " + " recovery " + Values.bunk_recovery);
                     }
-                    if(Values.credit < 150){
-                        MessagePanel.textField.setText("     "+ " no credit's no sleep!!!");
+                    if (Values.credit < 150) {
+                        MessagePanel.textField.setText("     " + " no credit's no sleep!!!");
+                    } else if (Values.enegry >= 30) {
+                        MessagePanel.textField.setText("   I don't want to sleep!!!");
                     }
                 }
             }
@@ -106,7 +117,7 @@ public class HotelPanel extends JPanel {
         panel_2.setBackground(Color.black);
         panel_2.setBorder(solidBorder);
 
-        panel_single_bed.setBackground(Color.gray);
+        panel_single_bed.setBackground(Color.lightGray);
         label_2 = new JLabel();
         label_2.setIcon(ImagePath.imageSingle_24px);
         panel_single_bed.add(label_2);
@@ -130,17 +141,19 @@ public class HotelPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == button_single_bed) {
                     System.out.println("click button_single_bed");          //280 credit  - 80 recovery
-                    if (Values.credit >= 280) {
+                    if (Values.credit >= 280 && Values.enegry < 30) {
                         Values.credit = Values.credit - Values.single_bed_price;
                         Values.enegry = Values.enegry + Values.single_bed_recovery;
 
                         CreditPanel.textField.setText("" + Values.credit);
                         EnergyPanel.textField.setText("" + Values.enegry);
 
-                        MessagePanel.textField.setText(" "+ " recovery " + Values.single_bed_recovery);
+                        MessagePanel.textField.setText(" " + " recovery " + Values.single_bed_recovery);
                     }
-                    if(Values.credit < 280){
-                        MessagePanel.textField.setText("     "+ " no credit's no sleep!!!");
+                    if (Values.credit < 280) {
+                        MessagePanel.textField.setText("     " + " no credit's no sleep!!!");
+                    } else if (Values.enegry >= 30) {
+                        MessagePanel.textField.setText("   I don't want to sleep!!!");
                     }
                 }
             }
@@ -155,7 +168,7 @@ public class HotelPanel extends JPanel {
         panel_3.setBackground(Color.black);
         panel_3.setBorder(solidBorder);
 
-        panel_bedroom.setBackground(Color.gray);
+        panel_bedroom.setBackground(Color.lightGray);
         label_3 = new JLabel();
         label_3.setIcon(ImagePath.imageBedroom_24px);
         panel_bedroom.add(label_3);
@@ -177,22 +190,27 @@ public class HotelPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == button_bedroom) {
                     System.out.println("click button_bedroom");
-                    if (Values.credit >= 350) { // 350 credit   - 100 recovery
+                    if (Values.credit >= 350 && Values.enegry < 30) { // 350 credit   - 100 recovery
                         Values.credit = Values.credit - Values.bedroom_price;
                         Values.enegry = Values.enegry + Values.berdoom_recovery;
 
                         CreditPanel.textField.setText("" + Values.credit);
                         EnergyPanel.textField.setText("" + Values.enegry);
 
-                        MessagePanel.textField.setText(" "+ " recovery " + Values.berdoom_recovery);
+                        MessagePanel.textField.setText(" " + " recovery " + Values.berdoom_recovery);
                     }
-                    if(Values.credit < 350){
-                        MessagePanel.textField.setText("     "+ " no credit's no sleep!!!");
+                    if (Values.credit < 350) {
+                        MessagePanel.textField.setText("     " + " no credit's no sleep!!!");
+                    } else if (Values.enegry >= 30) {
+                        MessagePanel.textField.setText("   I don't want to sleep!!!");
                     }
                 }
             }
         });
         button_bedroom.setBorder(solidBorder);
         panel_3.add(button_bedroom);
+
+
+
     }
 }
